@@ -1,2 +1,2 @@
-from new import app
+from new1 import app
 app=app
