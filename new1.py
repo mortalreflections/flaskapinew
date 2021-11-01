@@ -15,7 +15,7 @@ base_dir=os.path.abspath(os.path.dirname(__file__))
 
 if ENV == 'dev':
     app.debug = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + +os.path.join(base_dir , "dbnew.sqlite")
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(base_dir , "dbnew.sqlite")
 else:
     app.debug = False
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://snldvneiuzqmnh:66b3d97c2734951f0196a517f2af20c0b37893b7452f83ba4262a491d023febe@ec2-3-214-136-47.compute-1.amazonaws.com:5432/d55i0kauudaa64'
