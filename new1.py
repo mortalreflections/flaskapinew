@@ -18,7 +18,7 @@ if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + +os.path.join(base_dir , "dbnew.sqlite")
 else:
     app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = ''
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://snldvneiuzqmnh:66b3d97c2734951f0196a517f2af20c0b37893b7452f83ba4262a491d023febe@ec2-3-214-136-47.compute-1.amazonaws.com:5432/d55i0kauudaa64'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -32,8 +32,8 @@ class Advisor(db.Model):
     photo_url = db.Column(db.String(50))
     call=db.relationship("Calls" , backref="advisor")
 
-# def __repr__(self):
-#             return "Advisor('{}','{}')".format(self.name,self.photo_url)
+def __repr__(self):
+             return "Advisor('{}','{}')".format(self.name,self.photo_url)
     # booking_time=db.Column(db.DateTime)
     # booking_id=db.Column(db.Integer, unique=True)
 
@@ -46,8 +46,8 @@ class User(db.Model):
     password = db.Column(db.String(50))
     admin = db.Column(db.Boolean)
 
-# def __repr__(self):
-#             return "User('{}','{}','{}','{}'')".format(self.name,self.email,self.password,self.admin)    
+def __repr__(self):
+             return "User('{}','{}','{}','{}'')".format(self.name,self.email,self.password,self.admin)    
 
 
 class Calls(db.Model):
@@ -57,8 +57,8 @@ class Calls(db.Model):
     advisor_id=db.Column(db.Integer,db.ForeignKey("Advisor.id"))
     booking_time=db.Column(db.DateTime)
 
-# def __repr__(self):
-#             return "Calls('{}','{}','{}')".format(self.user_id,self.advisor_id,self.booking_time)     
+def __repr__(self):
+             return "Calls('{}','{}','{}','{}')".format(self.user_id,self.advisor_id,self.booking_time,self.booking_id)     
 
 db.create_all()
 db.session.commit()
